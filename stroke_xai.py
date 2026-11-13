@@ -36,7 +36,6 @@ def save(name):
 
 
 print("Python", platform.python_version(), "| shap", shap.__version__, "| sklearn", sklearn.__version__)
-shap.initjs()
 
 # %% [markdown]
 # ## Task 1: Exploratory data analysis
@@ -254,15 +253,14 @@ raw.loc[X_test.index[[A, B]]]
 # blue features push it down.
 
 # %%
-shap.plots.force(sv1[A])
-
-# %%
-shap.plots.force(sv1[B])
-
-# %%
 shap.plots.force(sv1[A].base_values, sv1[A].values, X_test.iloc[A].round(2), matplotlib=True, show=False,
                  figsize=(24, 3), contribution_threshold=0.1)
 save("rf_force_patientA.png")
+
+# %%
+shap.plots.force(sv1[B].base_values, sv1[B].values, X_test.iloc[B].round(2), matplotlib=True, show=False,
+                 figsize=(24, 3), contribution_threshold=0.1)
+plt.show()
 
 # %%
 shap.plots.waterfall(sv1[A], show=False)
@@ -395,9 +393,6 @@ pos = {p: i for i, p in enumerate(explain_pos)}
 
 assert np.allclose(ksv.base_values + ksv.values.sum(axis=1), f(X_explain), atol=1e-3)
 print("Kernel SHAP additivity holds (approximately)")
-
-# %%
-shap.plots.force(ksv[pos[A]])
 
 # %%
 shap.plots.waterfall(ksv[pos[A]], show=False)
