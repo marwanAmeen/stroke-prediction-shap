@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn
+imbalanced-learn
+shap>=0.46
+matplotlib
+jupyter
+nbconvert
+ipykernel
+jupytext
+pytest

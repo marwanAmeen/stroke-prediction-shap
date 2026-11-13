@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+# generated outputs (re-create by running the pipeline)
+figures/
+*.ipynb
+*.pptx
+*.docx
+# datasets are not redistributed; see README
+dataset/
+xai-series-master/data/
